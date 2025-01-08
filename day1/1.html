@@ -1,0 +1,264 @@
+90% of storage used … If you run out, you can't create, edit and upload files. Get 30 GB of storage for ₹59.00 ₹0 for 1 month.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Company Webpage</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Apply a basic font to the entire body */
+        body {
+            font-family: Arial, Helvetica, sans-serif; /* Basic web-safe font */
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background-color: #055ee4;
+            border-bottom: 2px solid #070101;
+        }
+        header .logo img {
+            height: 50px;
+        }
+        header .company-name {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        header .search-bar input[type="text"] {
+            padding: 5px;
+            margin-right: 10px;
+        }
+        header .buttons {
+            display: flex;
+            gap: 10px;
+        }
+        header .buttons button {
+            padding: 8px 15px;
+            cursor: pointer;
+        }
+
+        nav {
+            background-color: #333;
+            color: rgb(33, 85, 255);
+            padding: 10px 0;
+        }
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li {
+            margin: 0 20px;
+        }
+        nav ul li a {
+            color: rgb(22, 63, 247);
+            text-decoration: none;
+            font-size: 16px;
+        }
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        section {
+            padding: 20px;
+            margin: 10px 0;
+            border: 1px solid #111111;
+        }
+
+        section h1, section h2, section h3, section h4, section h5, section h6 {
+            margin-bottom: 10px;
+        }
+
+        ul, ol {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #240399;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f3efef;
+        }
+
+        td img {
+            width: 80px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="logo.png" alt="Company Logo">
+        </div>
+        
+        <div class="company-name">
+            My Company
+        </div>
+        
+        <div class="search-bar">
+            <input type="text" placeholder="Search...">
+        </div>
+        
+        <div class="buttons">
+            <button onclick="window.location.href='login.html'">Login</button>
+            <button onclick="window.location.href='signup.html'">Sign Up</button>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Product</a></li>
+            <li><a href="#">Shopping</a></li>
+            <li><a href="#">Product Cat</a></li>
+            <li><a href="#">Payment</a></li>
+        </ul>
+    </nav>
+
+    <!-- Section for Dishes Table -->
+    <section>
+        <h2>Our Delicious Dishes</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Example rows -->
+                <tr>
+                    <td><img src="dish1.jpg" alt="Dish 1"></td>
+                    <td>Dish 1 </td>
+                    <td>$10.99</td>
+                </tr>
+                <tr>
+                    <td><img src="dish2.jpg" alt="Dish 2"></td>
+                    <td>Dish 2</td>
+                    <td>$12.99</td>
+                </tr>
+                <tr>
+                    <td><img src="dish3.jpg" alt="Dish 3"></td>
+                    <td>Dish 3 </td>
+                    <td>$8.99</td>
+                </tr>
+                <tr>
+                    <td><img src="dish4.jpg" alt="Dish 4"></td>
+                    <td>Dish 4 </td>
+                    <td>$9.99</td>
+                </tr>
+                <tr>
+                    <td><img src="dish5.jpg" alt="Dish 5"></td>
+                    <td>Dish 5 </td>
+                    <td>$15.99</td>
+                </tr>
+                <tr>
+                    <td><img src="dish6.jpg" alt="Dish 6"></td>
+                    <td>Dish 6 </td>
+                    <td>$11.49</td>
+                </tr>
+                <tr>
+                    <td><img src="dish7.jpg" alt="Dish 7"></td>
+                    <td>Dish 7 </td>
+                    <td>$7.99</td>
+                </tr>
+                <tr>
+                    <td><img src="dish8.jpg" alt="Dish 8"></td>
+                    <td>Dish 8 </td>
+                    <td>$9.49</td>
+                </tr>
+                <tr>
+                    <td><img src="dish9.jpg" alt="Dish 9"></td>
+                    <td>Dish 9 </td>
+                    <td>$13.99</td>
+                </tr>
+                <tr>
+                    <td><img src="dish10.jpg" alt="Dish 10"></td>
+                    <td>Dish 10 </td>
+                    <td>$14.49</td>
+                </tr>
+                <tr>
+                    <td><img src="dish11.jpg" alt="Dish 11"></td>
+                    <td>Dish 11 </td>
+                    <td>$16.99</td>
+                </tr>
+                <tr>
+                    <td><img src="dish12.jpg" alt="Dish 12"></td>
+                    <td>Dish 12 </td>
+                    <td>$8.49</td>
+                </tr>
+                <tr>
+                    <td><img src="dish13.jpg" alt="Dish 13"></td>
+                    <td>Dish 13 </td>
+                    <td>$12.49</td>
+                </tr>
+                <tr>
+                    <td><img src="dish14.jpg" alt="Dish 14"></td>
+                    <td>Dish 14 </td>
+                    <td>$11.99</td>
+                </tr>
+                <tr>
+                    <td><img src="dish15.jpg" alt="Dish 15"></td>
+                    <td>Dish 15 Name</td>
+                    <td>$10.49</td>
+                </tr>
+                <tr>
+                    <td><img src="dish16.jpg" alt="Dish 16"></td>
+                    <td>Dish 16 Name</td>
+                    <td>$13.49</td>
+                </tr>
+                <tr>
+                    <td><img src="dish17.jpg" alt="Dish 17"></td>
+                    <td>Dish 17 Name</td>
+                    <td>$14.99</td>
+                </tr>
+                <tr>
+                    <td><img src="dish18.jpg" alt="Dish 18"></td>
+                    <td>Dish 18 Name</td>
+                    <td>$9.99</td>
+                </tr>
+                <tr>
+                    <td><img src="dish19.jpg" alt="Dish 19"></td>
+                    <td>Dish 19 Name</td>
+                    <td>$10.99</td>
+                </tr>
+                <tr>
+                    <td><img src="dish20.jpg" alt="Dish 20"></td>
+                    <td>Dish 20 Name</td>
+                    <td>$11.49</td>
+                </tr>
+                
+            </tbody>
+        </table>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 My Company</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

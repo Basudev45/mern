@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration</title>
+    <style>
+        :root {
+            --primary-color: #4caf50; /* Green */
+            --secondary-color: #8bc34a; /* Light Green */
+            --error-color: #e74c3c; /* Red */
+            --background-color: #f9f9f9; /* White */
+            --text-color: #333; /* Dark Text */
+            --input-border: #ccc;
+        }
+
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: var(--background-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        main {
+            background: var(--background-color);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 450px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2rem;
+            color: var(--primary-color);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        label {
+            font-size: 1rem;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+            color: var(--text-color);
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            font-size: 1rem;
+            border: 2px solid var(--input-border);
+            border-radius: 8px;
+            outline: none;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
+        }
+
+        input:invalid {
+            border-color: var(--error-color);
+        }
+
+        .error-message {
+            color: var(--error-color);
+            font-size: 0.875rem;
+            position: absolute;
+            bottom: -20px;
+            left: 0;
+            display: none;
+        }
+
+        .error-message.visible {
+            display: block;
+        }
+
+        .password-strength-container {
+            width: 100%;
+            background-color: #e0e0e0;
+            border-radius: 8px;
+            margin-top: 5px;
+            height: 10px;
+            overflow: hidden;
+            display: none;
+        }
+
+        .password-strength-bar {
+            height: 100%;
+            border-radius: 8px;
+            transition: width 0.3s ease;
+        }
+
+        .progress-text {
+            font-size: 0.875rem;
+            margin-top: 5px;
+            text-align: center;
+            color: var(--text-color);
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            font-size: 1rem;
+            border: none;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: var(--secondary-color);
+        }
+
+        @media (max-width: 500px) {
+            main {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>Create an Account</h1>
+        <form id="registration-form" novalidate>
+            <!-- Name Field -->
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" required aria-required="true" aria-describedby="name-error">
+                <div class="error-message" id="name-error">Full name is required.</div>
+            </div>
+
+            <!-- Email Field -->
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required aria-required="true" aria-describedby="email-error">
+                <div class="error-message" id="email-error">Please enter a valid email address.</div>
+            </div>
+
+            <!-- Password Field -->
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" aria-describedby="password-strength-text">
+                <div class="password-strength-container">
+                    <div class="password-strength-bar" id="strength-bar"></div>
+                </div>
+                <div class="progress-text" id="password-strength-text"> </div>
+            </div>
+
+            <!-- Confirm Password Field -->
+            <div class="form-group">
+                <label for="confirm-password">Confirm Password</label>
+                <input type="password" id="confirm-password" name="confirm-password" required aria-describedby="confirm-password-error">
+                <div class="error-message" id="confirm-password-error">Passwords do not match.</div>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit">Register</button>
+        </form>
+    </main>
+
+    <script>
+        const form = document.getElementById('registration-form');
+        const password = document.getElementById('password');
+        const confirmPassword = document.getElementById('confirm-password');
+        const strengthBar = document.getElementById('strength-bar');
+        const strengthText = document.getElementById('password-strength-text');
+        const confirmPasswordError = document.getElementById('confirm-password-error');
+
+        // Password strength logic
+        password.addEventListener('input', () => {
+            const value = password.value;
+            const strength = getPasswordStrength(value);
+            updateStrengthBar(strength);
+        });
+
+        function getPasswordStrength(password) {
+            let strength = 0;
+            if (password.length >= 8) strength++;
+            if (/[A-Z]/.test(password)) strength++;
+            if (/\d/.test(password)) strength++;
+            if (/[@$!%*?&]/.test(password)) strength++;
+            return strength;
+        }
+
+        function updateStrengthBar(strength) {
+            const colors = ['#e74c3c', '#f39c12', '#f1c40f', '#2ecc71'];
+            strengthBar.style.width = `${(strength / 4) * 100}%`;
+            strengthBar.style.backgroundColor = colors[strength - 1] || colors[0];
+            strengthText.textContent = ['Weak', 'Fair', 'Good', 'Strong'][strength - 1] || 'Weak';
+        }
+
+        // Confirm password validation
+        confirmPassword.addEventListener('input', () => {
+            if (confirmPassword.value !== password.value) {
+                confirmPasswordError.classList.add('visible');
+            } else {
+                confirmPasswordError.classList.remove('visible');
+            }
+        });
+
+        // Form submission
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            if (confirmPassword.value !== password.value) {
+                confirmPasswordError.classList.add('visible');
+                return;
+            }
+            alert('Form submitted successfully!');
+        });
+    </script>
+</body>
+</html>
